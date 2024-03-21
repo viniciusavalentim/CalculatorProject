@@ -1,38 +1,57 @@
-<div>
-    <form [formGroup]="jurosCompostos" (ngSubmit)="submit()" #formdir="ngForm">
+<div class="container">
 
-        <div id="formGroup">
-            <div class="valor-inicial">
-                <label for="">Valor Inicial</label>
-                <input type="number" id="valorInicial" formControlName="valorInicial" placeholder=" 0,00" required>
-            </div>
-    
-            <div class="valor-mensal">
-                <label for="">Valor Mensal</label>
-                <input type="number" id="valorMensal" formControlName="valorMensal" placeholder=" 0,00" required>
-            </div>
-            
-            <div class="taxa-juros">
-                <label for="">Taxa De juros</label>
-                <input type="number" id="taxaJuros" formControlName="taxaJuros" placeholder="0,00" required>
-                <select id="typeTax" formControlName="typeTax" required>
-                    <option value="Anual">Anual</option>
-                    <option value="Mensal">Mensal</option>
-                </select>
-            </div>
-    
-            
-            <div class="tempo">
-                <label for="">Periodo em</label>
-                <input type="number" id="tempo" formControlName="tempo" placeholder=" 0,00" required>
-                <select id="typeTime" formControlName="typeTime" required>
-                    <option value="Anos">Anos</option>
-                    <option value="Meses">Meses</option>
-                </select>
-            </div>
-    
-            <button type="submit" [disabled]="!jurosCompostos.valid">Calcular</button>
-            <button>Limpar</button>    
+    <div class="head">
+        <h1 class="title-head">Focco</h1>
+        <a href="#" class="link-head">=</a>
+    </div>
+    <div class="container-calculadora-juros">
+
+        <div class="title-calculadora-juros">
+            <h1>Calculadora</h1>
+            <h1>Juros Compostos</h1>
         </div>
-    </form>
+       
+
+        <form [formGroup]="jurosCompostos" (ngSubmit)="submit()" #formdir="ngForm">
+    
+            <div id="formGroup">
+
+                <div class="input-um">
+                    <div class="valor-inicial">
+                        <label for="" class="label-valor-inicial">Valor Inicial</label>
+                        <input type="number" id="valorInicial" formControlName="valorInicial" placeholder=" 0,00" class=".input-valor-inicial" required>
+                    </div>
+                </div>
+        
+                <div class="valor-mensal">
+                    <label for="">Valor Mensal</label>
+                    <input type="number" id="valorMensal" formControlName="valorMensal" placeholder=" 0,00" required>
+                </div>
+                
+                <div class="taxa-juros">
+                    <label for="">Taxa De juros</label>
+                    <input type="number" id="taxaJuros" formControlName="taxaJuros" placeholder="0,00" required>
+                    <select id="typeTax" formControlName="typeTax" required>
+                        <option value="Anual">Anual</option>
+                        <option value="Mensal">Mensal</option>
+                    </select>
+                </div>
+        
+                
+                <div class="tempo">
+                    <label for="">Periodo em</label>
+                    <input type="number" id="tempo" formControlName="tempo" placeholder=" 0,00" required>
+                    <select id="typeTime" formControlName="typeTime" required>
+                        <option value="Anos">Anos</option>
+                        <option value="Meses">Meses</option>
+                    </select>
+                </div>
+        
+                <button type="submit" [disabled]="!jurosCompostos.valid">Calcular</button>
+                <button>Limpar</button>    
+            </div>
+        </form>
+    </div>
+
+
 </div>
