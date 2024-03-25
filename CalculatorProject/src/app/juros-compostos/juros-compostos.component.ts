@@ -18,9 +18,9 @@ export class JurosCompostosComponent implements OnInit {
     this.jurosCompostos = this.fb.group({
       valorInicial: ['', Validators.required],
       valorMensal: ['', Validators.required],
-      taxaJuros: ['0', Validators.required],
+      taxaJuros: ['', Validators.required],
       typeTax: ['Anual', Validators.required],
-      tempo: ['0', Validators.required],
+      tempo: ['', Validators.required],
       typeTime: ['Anos', Validators.required]
     });
 
@@ -128,9 +128,9 @@ export class JurosCompostosComponent implements OnInit {
 
   submit(){
     console.log(this.jurosCompostos.value);
-
     const dados = this.GetValues();
     console.log(this.result().toFixed(2));
+    this.router.navigate(['/result']);
   };
 
 

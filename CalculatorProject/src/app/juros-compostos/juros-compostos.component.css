@@ -1,5 +1,4 @@
 
-
 .container{
     max-width: 100%;
     display: flex;
@@ -8,7 +7,7 @@
 }
 
 .container > .head{
-    margin: 25px;
+    margin: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,49 +22,134 @@
 }
 
 .head > .title-head{
+    margin-top: 20px;
     color: #D5DEEF;
-    font-size: 60px;
+    font-size: 50px;
     
 }
 .link-head{
-    color: F0F3FA;
+    margin-top: 20px;
+    color: #F0F3FA;
     margin-left: 60px;
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .container-calculadora-juros{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
     background-color: #F0F3FA;
-    margin-top: 30px;
-    margin: 0 auto;
-    width: 80%;
-    height: 800px;
+    margin-top: 40px;
+    margin-left: 20px;
+    width: 90%;
+    height: 590px;
     padding: 15px;
     border-radius: 20px;
     text-align: center;
 }
 
 .container-calculadora-juros > .title-calculadora-juros{
-    font-size: 12px;
+    font-size: 10px;
+    color: #395886;
     margin: 25px;
 }
 
-.input-um{
+
+.formgroup{
     display: flex;
-    flex-direction: colum;
+    flex-direction: column;
     align-items: center;
 }
 
 .valor-inicial {
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha os itens à esquerda */
+    align-items: flex-start;
+    
 }
 
 .label-valor-inicial {
-    margin-bottom: 5px; /* Adiciona um espaçamento inferior */
+    margin-bottom: 5px; 
 }
 
 .input-valor-inicial {
-    width: 100%; /* Garante que o input ocupe toda a largura */
-    box-sizing: border-box; /* Inclui o padding e a borda na largura total */
+    width: 250px;
+    padding: 15px;
+    padding-left: 55px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 1px; 
+    border: none;
+    background-color: #D5DEEF;
+    box-shadow: 1px 1px 15px rgb(168, 168, 168);
+
 }
+
+.quadrado-sifrao{
+    width: 45px;
+    height: 46px;
+    background-color: #628BEC;
+    position: absolute;
+    border-radius: 10px 0px 0px 10px;
+    color: #D5DEEF;
+}
+
+
+.quadrado-select{
+    width: 80px;
+    height: 46px;
+    position: absolute;
+    margin-top: 19px;
+    border: none;
+    background-color:#628BEC;
+    color: #D5DEEF;
+    border-radius: 0px 10px 10px 0px;
+    margin-left: 170px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.span-input{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    text-align: center;
+    margin-top: 14px;
+}
+
+.input-periodo{
+    width: 250px;
+    padding: 15px;
+    padding-left: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 1px; 
+    border: none;
+    background-color: #D5DEEF;
+    box-shadow: 1px 1px 15px rgb(168, 168, 168);
+
+}
+
+.btn-calcular{
+    margin-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top:15px;
+    padding-bottom:15px;
+    border: none;
+    color: #D5DEEF;
+    background-color: #628BEC;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: 1px 1px 15px rgb(168, 168, 168);
+}
+
+.btn-limpar{
+    margin-top: 15px;
+    border: none;
+    color: #395886;
+    font-size: 15px;
+}
+
