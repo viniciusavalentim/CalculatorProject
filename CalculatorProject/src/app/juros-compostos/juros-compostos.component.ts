@@ -12,6 +12,9 @@ import { DataService } from '../data-service.service';
 export class JurosCompostosComponent implements OnInit {
 
   jurosCompostos!: FormGroup;
+  tempoMensal!: number;
+  valorInvestido?: number;
+
 
   constructor(private fb: FormBuilder,private route: ActivatedRoute, private router: Router,private dataService: DataService ) {};
 
@@ -36,6 +39,15 @@ export class JurosCompostosComponent implements OnInit {
     const valorMensal = this.GetValues().valorMensal;
     const taxaJuros = this.GetValues().taxaJuros;
     const tempo = this.GetValues().tempo;
+    if(this.GetValues().typeTime == "Anos")
+    {
+      this.tempoMensal = this.GetValues().tempo * 12;
+    }
+    else{
+      this.tempoMensal = this.GetValues().tempo;
+    }
+
+    this.valorInvestido = valorInicial + valorMensal * this.tempoMensal; 
 
 
     let taxaDeJurosMensal = taxaJuros / 12;
@@ -67,15 +79,10 @@ export class JurosCompostosComponent implements OnInit {
           console.log("entrou valor mensal");
           juros = ((( 1 + (taxaDeJurosMensal/100)  )**(tempoMensal) ) - 1) / ( (taxaDeJurosMensal/100));
           resultado = valorMensal * juros;
-
-          console.log(juros)
-          console.log(valorMensal)
-
           return resultado;
         };
 
         juros  =  ( valorInicial * (1 + ((taxaJuros/100)))**(tempo) ) +  (valorMensal *((( 1 + ((taxaJuros/100))  )**(tempo) ) - 1) / ( (taxaJuros/100) ) );
-
         return juros;       
       }
 
@@ -128,7 +135,12 @@ export class JurosCompostosComponent implements OnInit {
   submit(){
     const result = this.result();
     this.dataService.setResultado(result);
-    this.dataService.setResultadoNumber([this.GetValues().valorInicial, this.GetValues().valorMensal, this.GetValues().taxaJuros, this.GetValues().tempo]);
+    this.dataService.setResultadoNumber([this.GetValues().valorInicial, 
+                                         this.GetValues().valorMensal, 
+                                         this.GetValues().taxaJuros, 
+                                         this.tempoMensal, 
+                                         this.result(),
+                                         this.valorInvestido]);
     console.log(this.result().toFixed(2));
     this.router.navigate(['/result']);
   };

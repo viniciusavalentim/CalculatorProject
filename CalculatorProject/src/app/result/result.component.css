@@ -71,6 +71,8 @@
     height: 55px;
     border-radius: 9px;
     margin-top: 20px;
+    box-shadow: 1px 1px 15px rgba(102, 102, 102, 0.171);
+
 }
 
 .title-valor-final{
@@ -104,4 +106,6 @@
     color: #F0F3FA;
     padding: 16px;
     border-radius: 9px;
+    box-shadow: 1px 1px 15px rgba(102, 102, 102, 0.171);
+
 }

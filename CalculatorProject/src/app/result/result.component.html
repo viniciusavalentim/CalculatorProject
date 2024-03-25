@@ -3,19 +3,19 @@
     <div class="first-section">
         <div class="retangulo-dados">
             <h4 class="title-quadrado">Valor Inicial</h4>
-            <span class="text-span">R$ 500,00</span>
+            <span class="text-span">{{valorInicialFormatado}}</span>
         </div>
         <div class="retangulo-dados">
             <h4  class="title-quadrado">Valor Mensal</h4>
-            <span class="text-span">R$ 7300</span>
+            <span class="text-span">{{valorMensalFormatado}}</span>
         </div>
         <div class="retangulo-dados">
             <h4 class="title-quadrado">Taxa de Juros</h4>
-            <span class="text-span">15,22% (Anual)</span>
+            <span class="text-span">{{taxaJurosFormatado}} (Anual)</span>
         </div>
         <div class="retangulo-dados">
             <h4 class="title-quadrado">Periodo em</h4>
-            <span class="text-span">12 Meses</span>
+            <span class="text-span">{{periodo}} Meses</span>
         </div>
     </div>
 
@@ -23,17 +23,17 @@
     <div class="second-section">
         <div class="container-result">
             <h4 class="title-valor-final">Valor Final</h4>
-            <span class="span-valor-final">R$ 500,00</span>
+            <span class="span-valor-final">{{valorFinalFormatado}}</span>
         </div>
         <div class="container-result">
             <h4 class="title-valor-final">Valor Total Investido</h4>
-            <span class="span-total-investido">R$ 500,00</span>
+            <span class="span-total-investido">{{valorInvestidoFormatado}}</span>
         </div>
         <div class="container-result">
             <h4 class="title-valor-final">Total de Juros Obtido</h4>
-            <span class="span-total-juros">R$ 500,00</span>
+            <span class="span-total-juros">{{totalJurosFormatado}}</span>
         </div>
     </div>
 
-    <button class="btn-back"> Fazer outro Cálculo</button>
+    <button class="btn-back" routerLink="/"> Fazer outro Cálculo</button>
 </div>

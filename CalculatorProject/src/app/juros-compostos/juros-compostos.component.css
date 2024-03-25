@@ -17,7 +17,7 @@
     align-items: center;
     width: 100%;
     font-weight: 600;
-    margin-left: 70px;
+    margin-left: 50px;
 }
 
 .container > .head h1, .container > .head a {
@@ -29,6 +29,7 @@
     margin-top: 15px;
     color: #D5DEEF;
     font-size: 43px;
+    font-weight: 500;
     
 }
 .link-head{
