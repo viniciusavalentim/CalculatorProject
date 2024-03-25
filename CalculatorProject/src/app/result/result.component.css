@@ -1,0 +1,107 @@
+.container-central{
+    background-color: #F0F3FA;
+    width: 100%;
+    max-width: 330px;
+    height: 670px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 29px;
+    border-radius: 15px;
+    text-align: center;
+    
+}
+
+.title-calculo{
+    color: #395886;
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-left: -165px;
+}
+
+.first-section{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas com largura igual */
+    grid-template-rows: repeat(2, auto); /* Duas linhas com altura automática */
+    gap: 10px; /* Espaçamento entre as células */
+    
+}
+
+
+.retangulo-dados{
+    background-color: #D5DEEF;
+    width: 140px;
+    height: 55px;
+    max-width: 150px;
+    max-height: 150px; 
+    font-size: 9px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 15px rgba(102, 102, 102, 0.171);
+    
+}
+
+.title-quadrado{
+    font-weight: 400;
+    margin-top: 15px;
+    font-size: 8px;
+}
+
+.text-span{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.title-resultado{
+    color: #395886;
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 40px;
+    margin-left: -167px;
+}
+
+.second-section{
+
+}
+.container-result{
+    background-color: #D5DEEF;
+    width: 290px;
+    height: 55px;
+    border-radius: 9px;
+    margin-top: 20px;
+}
+
+.title-valor-final{
+    padding-top: 12px;
+    font-weight: 400;
+    font-size: 10px;
+}
+
+.span-valor-final{
+    font-size: 19px;
+    font-weight: 600;
+    color: #484848;
+}
+
+.span-total-investido{
+    font-size: 19px;
+    font-weight: 600;
+    color: #1759F6;
+}
+
+.span-total-juros{
+    font-size: 19px;
+    font-weight: 600;
+    color: #00730B;
+}
+
+.btn-back{
+    margin-top: 45px;
+    border: none;
+    background-color: #628BEC;
+    color: #F0F3FA;
+    padding: 16px;
+    border-radius: 9px;
+}

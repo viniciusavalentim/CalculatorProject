@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, UntypedFormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { concatWith, map } from 'rxjs';
+import { DataService } from '../data-service.service';
 
 @Component({
   selector: 'app-juros-compostos',
@@ -12,7 +13,7 @@ export class JurosCompostosComponent implements OnInit {
 
   jurosCompostos!: FormGroup;
 
-  constructor(private fb: FormBuilder,private route: ActivatedRoute, private router: Router) {};
+  constructor(private fb: FormBuilder,private route: ActivatedRoute, private router: Router,private dataService: DataService ) {};
 
   ngOnInit(): void {
     this.jurosCompostos = this.fb.group({
@@ -23,8 +24,6 @@ export class JurosCompostosComponent implements OnInit {
       tempo: ['', Validators.required],
       typeTime: ['Anos', Validators.required]
     });
-
-  
 
   };
 
@@ -127,8 +126,9 @@ export class JurosCompostosComponent implements OnInit {
 
 
   submit(){
-    console.log(this.jurosCompostos.value);
-    const dados = this.GetValues();
+    const result = this.result();
+    this.dataService.setResultado(result);
+    this.dataService.setResultadoNumber([this.GetValues().valorInicial, this.GetValues().valorMensal, this.GetValues().taxaJuros, this.GetValues().tempo]);
     console.log(this.result().toFixed(2));
     this.router.navigate(['/result']);
   };
