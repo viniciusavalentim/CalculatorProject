@@ -26,16 +26,16 @@
 }
 
 .head > .title-head{
-    margin-top: 20px;
+    margin-top: 15px;
     color: #D5DEEF;
-    font-size: 50px;
+    font-size: 43px;
     
 }
 .link-head{
-    margin-top: 20px;
+    margin-top: 15px;
     color: #F0F3FA;
     margin-left: 60px;
-    font-size: 40px;
+    font-size: 43px;
 }
 
 .container-calculadora-juros{
@@ -44,7 +44,7 @@
     align-items: center;
     position: relative;
     background-color: #F0F3FA;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: 15px;
     width: 90%;
     height: 590px;
