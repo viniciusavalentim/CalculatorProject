@@ -14,6 +14,7 @@ export class JurosCompostosComponent implements OnInit {
   jurosCompostos!: FormGroup;
   tempoMensal!: number;
   valorInvestido?: number;
+  typeTaxMonth?: number;
 
 
   constructor(private fb: FormBuilder,private route: ActivatedRoute, private router: Router,private dataService: DataService ) {};
@@ -39,6 +40,13 @@ export class JurosCompostosComponent implements OnInit {
     const valorMensal = this.GetValues().valorMensal;
     const taxaJuros = this.GetValues().taxaJuros;
     const tempo = this.GetValues().tempo;
+    let taxaDeJurosMensal = taxaJuros / 12;
+    let tempoMensal = tempo * 12;
+    let resultado;
+    let jurosComValorIncial;
+    let jurosComValorMensal;
+    let juros = 0;
+
     if(this.GetValues().typeTime == "Anos")
     {
       this.tempoMensal = this.GetValues().tempo * 12;
@@ -47,22 +55,17 @@ export class JurosCompostosComponent implements OnInit {
       this.tempoMensal = this.GetValues().tempo;
     }
 
+    if(this.GetValues().typeTax == "Mensal")
+    {
+      this.typeTaxMonth = 1;
+    }
+    else
+    {
+      this.typeTaxMonth = 0;
+    }
+
     this.valorInvestido = valorInicial + valorMensal * this.tempoMensal; 
 
-
-    let taxaDeJurosMensal = taxaJuros / 12;
-
-    let tempoMensal = tempo * 12;
-
-    let resultado;
-
-
-    let jurosComValorIncial;
-    let jurosComValorMensal;
-    let quantidadeDeJurosObtido;
-    let totalInvestido;
-    let juros = 0;
-    let calculo = 0;
 
    
       if(this.GetValues().typeTax == "Anual" && this.GetValues().typeTime == "Anos")
@@ -82,11 +85,9 @@ export class JurosCompostosComponent implements OnInit {
           return resultado;
         };
 
-        juros  =  ( valorInicial * (1 + ((taxaJuros/100)))**(tempo) ) +  (valorMensal *((( 1 + ((taxaJuros/100))  )**(tempo) ) - 1) / ( (taxaJuros/100) ) );
+        juros  =  ( valorInicial * (1 + ((taxaDeJurosMensal/100)))**(tempoMensal) )  +  valorMensal * ((( 1 + (taxaDeJurosMensal/100)  )**(tempoMensal) ) - 1) / ( (taxaDeJurosMensal/100));
         return juros;       
       }
-
-
       
       if(this.GetValues().typeTax == "Mensal" && this.GetValues().typeTime == "Meses")
       {
@@ -101,13 +102,6 @@ export class JurosCompostosComponent implements OnInit {
           console.log("entrou valor mensal");
           juros = ((( 1 + ((taxaJuros/100))  )**(tempo) ) - 1) / ( (taxaJuros/100) );
           jurosComValorMensal = valorMensal * juros;
-
-          quantidadeDeJurosObtido = calculo - (valorMensal * tempo*12);
-          console.log(quantidadeDeJurosObtido);
-
-          totalInvestido = calculo - quantidadeDeJurosObtido;
-          console.log(totalInvestido);
-
           return jurosComValorMensal;
         };
 
@@ -118,14 +112,43 @@ export class JurosCompostosComponent implements OnInit {
       
       if(this.GetValues().typeTax == "Anual" && this.GetValues().typeTime == "Meses")
       {
-        juros = (1 + ((taxaJuros/100)/12))**(tempo);
-        console.log("Anual/meses")
+        if(valorMensal == 0 || valorMensal == null){
+          console.log("entrou valor Inicial")
+          juros = (1 + ((taxaDeJurosMensal/100)))**(tempo);
+          jurosComValorIncial = valorInicial * juros;
+          return  jurosComValorIncial;
+        }
+
+        if(valorInicial == 0 || valorInicial == null){
+          console.log("entrou valor mensal");
+          juros = ((( 1 + ((taxaDeJurosMensal/100))  )**(tempo) ) - 1) / ( (taxaDeJurosMensal/100) );
+          jurosComValorMensal = valorMensal * juros;
+          return jurosComValorMensal;
+        };
+
+        juros  =  ( valorInicial * (1 + ((taxaDeJurosMensal/100)))**(tempo) ) +  (valorMensal *((( 1 + ((taxaDeJurosMensal/100))  )**(tempo) ) - 1) / ( (taxaDeJurosMensal/100)) );
+
+        return juros;    
       }
 
       if(this.GetValues().typeTax == "Mensal" && this.GetValues().typeTime == "Anos")
       {
-        juros = (1 + ((taxaJuros/100)))**(tempo*12);
-        console.log("Mensal/Anos")
+        if(valorMensal == 0 || valorMensal == null){
+          console.log("entrou valor Inicial")
+          juros = (1 + ((taxaJuros/100)))**(tempoMensal);
+          resultado = valorInicial * juros;
+          return  resultado;
+        }
+
+        if(valorInicial == 0 || valorInicial == null){
+          console.log("entrou valor mensal");
+          juros = ((( 1 + (taxaJuros/100)  )**(tempoMensal) ) - 1) / ( (taxaJuros/100));
+          resultado = valorMensal * juros;
+          return resultado;
+        };
+
+        juros  =  ( valorInicial * (1 + ((taxaJuros/100)))**(tempoMensal) )  +  valorMensal * ((( 1 + (taxaJuros/100)  )**(tempoMensal) ) - 1) / ( (taxaJuros/100));
+        return juros;     
       }
 
       return 0;
@@ -140,11 +163,10 @@ export class JurosCompostosComponent implements OnInit {
                                          this.GetValues().taxaJuros, 
                                          this.tempoMensal, 
                                          this.result(),
-                                         this.valorInvestido]);
+                                         this.valorInvestido,
+                                         this.typeTaxMonth]);
     console.log(this.result().toFixed(2));
     this.router.navigate(['/result']);
   };
-
-
 
 }

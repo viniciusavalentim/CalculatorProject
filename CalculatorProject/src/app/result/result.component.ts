@@ -31,6 +31,9 @@ export class ResultComponent implements OnInit{
   totalJuros?: number;
   totalJurosFormatado?: string;
 
+  typeTaxMonth?: number;
+  typeTaxMonthString?: string;
+
 
   constructor(private dataService: DataService) {
   }
@@ -85,6 +88,17 @@ export class ResultComponent implements OnInit{
       style: 'currency',
       currency: 'BRL'
     });
+
+
+    this.typeTaxMonth = this.resultadoNumeros[6];
+    if(this.typeTaxMonth == 1)
+    {
+      this.typeTaxMonthString = "Mensal";
+    }
+    else
+    {
+      this.typeTaxMonthString = "Anual";
+    };
 
   }
 
