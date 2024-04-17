@@ -47,6 +47,13 @@ export class JurosCompostosComponent implements OnInit {
     let jurosComValorMensal;
     let juros = 0;
 
+    const counters = document.querySelectorAll(".counters span")
+    const container = document.querySelector(".counters");
+    let activated = false;
+
+
+
+
     if(this.GetValues().typeTime == "Anos")
     {
       this.tempoMensal = this.GetValues().tempo * 12;

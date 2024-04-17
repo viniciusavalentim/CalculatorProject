@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.container > .head{
+.head{
     margin: 15px;
     display: flex;
     justify-content: space-between;
@@ -21,8 +21,8 @@
 }
 
 .container > .head h1, .container > .head a {
-    flex: 1; /* Distribui o espaço disponível igualmente entre h1 e a */
-    text-align: center; /* Centraliza o texto dentro de h1 e a */
+    flex: 1;
+    text-align: center; 
 }
 
 .head > .title-head{

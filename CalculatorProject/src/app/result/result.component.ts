@@ -11,7 +11,7 @@ export class ResultComponent implements OnInit{
   resultado?: number;
   resultadoNumeros?: number[];
 
-  valorInicial?: number; 
+  valorInicial!: number; 
   valorInicialFormatado?: string;
 
   valorMensal?: number;
@@ -35,8 +35,49 @@ export class ResultComponent implements OnInit{
   typeTaxMonthString?: string;
 
 
+  projectcount: number = 0;
+  projectcountstop: any = setInterval(()=>{
+    if (this.projectcount == this.valorInicial) {
+      clearInterval(this.projectcountstop);
+    } else {
+      this.projectcount += 0.01;
+      this.projectcount = parseFloat(this.projectcount.toFixed(2));
+    }
+  },1);
+
+  valorFinalAnimation: number = 0;
+  valorFinalAnimationStop: any = setInterval(()=>{
+    if (this.valorFinalAnimation == this.valorFinal) {
+      clearInterval(this.valorFinalAnimationStop);
+    } else {
+      this.valorFinalAnimation += 0.01;
+      this.valorFinalAnimation = parseFloat(this.projectcount.toFixed(2));
+    }
+  },1);
+
+
   constructor(private dataService: DataService) {
   }
+
+  formatarParaReais(numero: number): string {
+    const partes = numero.toFixed(2).toString().split('.');
+    const inteiro = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const decimal = partes[1];
+    return `R$ ${inteiro},${decimal}`;
+  }
+
+  startCounter() {
+    this.projectcountstop = setInterval(() => {
+      if (this.projectcount >= this.valorInicial) {
+        clearInterval(this.projectcountstop);
+      } else {
+        this.projectcount += 0.01;
+        this.projectcount = parseFloat(this.projectcount.toFixed(2));
+      }
+    }, 50);
+  }
+  
+
   
   ngOnInit(): void {
     this.resultado = this.dataService.getResultado();
@@ -60,8 +101,8 @@ export class ResultComponent implements OnInit{
     this.taxaJuros = this.resultadoNumeros[2];
     this.taxaJurosFormatado = (this.taxaJuros/100).toLocaleString('pt-BR', {
       style: 'percent',
-      minimumFractionDigits: 2, // Define o mínimo de casas decimais
-      maximumFractionDigits: 2, // Define o máximo de casas decimais
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2, 
     });
 
     this.periodo = this.resultadoNumeros[3];
@@ -99,6 +140,8 @@ export class ResultComponent implements OnInit{
     {
       this.typeTaxMonthString = "Anual";
     };
+
+
 
   }
 
